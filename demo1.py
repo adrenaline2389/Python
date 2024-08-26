@@ -20,6 +20,8 @@
 # 增删查改
 import random
 
+DEFEND = 0.6
+FORGET = 0.1
 
 x,y,z="石头","剪刀","布"
 # 字典 键值对
@@ -29,21 +31,28 @@ x,y,z="石头","剪刀","布"
 #     "3":"布",
 #     "4":"exit",
 # }
-a =["石头","剪刀","布","exit"]
+a = ["石头","剪刀","布","exit"]
 
 # history = [0, 0, 0]
 history = []
 for _ in range(3):
-    history.append(0)
+    history.append(1e-8)
 print(history)
+print(history[1] / sum(history))
 
+journal = []
+for _ in range(3):
+    journal.append(1e-8)
+print(journal)
 
-p = random.random() * 3
-q = int(p)
+computer_posture = [0, 0, 0]
+
+last_posture = -1
 
 # for i in range(10):
 i = 0
 while i <= 10:
+    # input 预处理
     player_input = input("请输入  " + str(a) + ":\n")
     if not player_input.isdigit():
         print('ERROR')
@@ -56,22 +65,46 @@ while i <= 10:
                 break
 
             player = a[player_input]
-            p = random.random() * 3
-            q = int(p)
-            computer = a[q]
 
+            # f(x)
+            # 三个随机数
+            # 玩家某个招式出的次数越多，电脑就越会克制
+            computer_posture[0] = random.random() + DEFEND * history[1] / sum(history)
+            computer_posture[1] = random.random() + DEFEND * history[2] / sum(history)
+            computer_posture[2] = random.random() + DEFEND * history[0] / sum(history)
+
+            print(computer_posture)
+            print(max(computer_posture), computer_posture.index(max(computer_posture)))
+
+            # # 玩家连续出
+            if last_posture != -1:
+                if last_posture == 0:
+                    computer_posture[2] = computer_posture[2] - FORGET
+                else:
+                    computer_posture[last_posture - 1] -= FORGET
+
+            # 电脑出拳概率
+            print(computer_posture)
+            computer = a[computer_posture.index(max(computer_posture))]
+
+            # output 结果
             if (player == x and computer == y) or (player == y and computer == z) or (
                     player == z and computer == x):
                 print("我出: " + player, "电脑出: " + computer, "结果是: win")
+                journal[0] += 1
             elif player == computer:
                 print("我出: " + player, "电脑出: " + computer, "结果是: peace")
+                journal[1] += 1
             else:
                 print("我出: " + player, "电脑出: " + computer, "结果是: lose")
+                journal[2] += 1
 
             i += 1
+            last_posture = player_input
         else :
             print('ERROR')
 
     # 把三种招式的input次数填进列表
     history[player_input] += 1
     print("玩家出拳历史记录", history)
+    print('玩家胜负记录：赢，平，输',journal)

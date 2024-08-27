@@ -95,7 +95,7 @@ while i <= 10:
             elif player == computer:
                 print("我出: " + player, "电脑出: " + computer, "结果是: peace")
                 journal[1] += 1
-            else:
+            else :
                 print("我出: " + player, "电脑出: " + computer, "结果是: lose")
                 journal[2] += 1
 

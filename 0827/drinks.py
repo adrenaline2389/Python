@@ -35,5 +35,5 @@ if __name__ == "__main__":
 
     plt.bar(x = x, height = y)
     plt.show()
-    plt.pie(x=y,labels=x,colors=['red', "green", "#000000",])
+    plt.pie(x=y,labels=x,colors=[(178/255, 178/255, 178/255), "red", "#b2b2b2",])
     plt.show()

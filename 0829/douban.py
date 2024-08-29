@@ -12,34 +12,34 @@ from bs4 import BeautifulSoup
 # else:
 #     print("匹配失败")
 
-# # 第一种 正则爬虫
-# url = r"https://movie.douban.com/top250?start=%3E{(page"
-# headers = {
-#     'user-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0'
-# }
-# # 访问网址
-# rep = requests.get(url, headers=headers)
-# print(rep)
-#
-# # 匹配名称
-# title = re.compile( r'<li>.*?<span class="title">(?P<name>.*?)</span>', re.S)
-# result = title.finditer(rep.text)
-# print(result)
-# for it in result:
-#     print(it)
-#     print(it.group("name"))
-#
-# # 匹配评分
-# score = re.compile( r'<li>.*?<span class="rating_num" property="v:average">(?P<score>.*?)</span>', re.S)
-# result = score.finditer(rep.text)
-# for it in result:
-#     print(it.group("score"))
-#
-# #匹配名言
-# words = re.compile(r'<li>.*?<span class="inq">(?P<words>.*?)</span>', re.S)
-# result = words.finditer(rep.text)
-# for it in result:
-#     print(it.group("words"))
+# 第一种 正则爬虫
+url = r"https://movie.douban.com/top250?start=%3E{(page"
+headers = {
+    'user-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0'
+}
+# 访问网址
+rep = requests.get(url, headers=headers)
+print(rep)
+
+# 匹配名称
+title = re.compile( r'<li>.*?<span class="title">(?P<name>.*?)</span>', re.S)
+result = title.finditer(rep.text)
+print(result)
+for it in result:
+    print(it)
+    print(it.group("name"))
+
+# 匹配评分
+score = re.compile( r'<li>.*?<span class="rating_num" property="v:average">(?P<score>.*?)</span>', re.S)
+result = score.finditer(rep.text)
+for it in result:
+    print(it.group("score"))
+
+#匹配名言
+words = re.compile(r'<li>.*?<span class="inq">(?P<words>.*?)</span>', re.S)
+result = words.finditer(rep.text)
+for it in result:
+    print(it.group("words"))
 
 
 # 第二种 beautifulSoup4

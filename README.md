@@ -81,6 +81,23 @@ abcde非一次性入栈，出栈顺序
 - beautifulSoup4
 
 
+## 其他知识
+- 代码开发流程
+- 代码查错流程
+- github
+### git
+首先git add和git commit
+
+idea可以直接完成，其他需要自己来
+
+推代码
+```bash
+git push origin master
+```
+拉代码
+```bash
+git pull origin master
+```
 ## 待加强部分
 - 嵌套循环
 - 类的理解

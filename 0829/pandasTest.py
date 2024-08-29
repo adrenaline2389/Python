@@ -10,13 +10,13 @@ for i in data:
 print()
 
 # 取data列表中的s1
-# for i in data['s1']:
-#     print(i, end=" ")
-# print()
+for i in data['s1']:
+    print(i, end=" ")
+print()
 
-# for i in data['s2']:
-#     print(i, end=" ")
-# print()
+for i in data['s2']:
+    print(i, end=" ")
+print()
 
 data['s1'] = 1
 print(data['s1'])

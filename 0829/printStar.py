@@ -4,25 +4,28 @@
 #  ***
 #   *
 
-# n = eval(input("请输入星星最大长度n"))
-# # for i in range(n // 2 + 1):
-# #     a = (2 * (i+1) - 1)
-# #     print(' ' * int((n // 2 + 1) - i), end="")
-# #     print('*' * a)
-# #
-# # for i in range(n // 2):
-# #     a = (2 * (i+1) - 1)
-# #     print(' ' * (i - (n // 2 + 1)),  end="")
-# #     print('*' * a)
+n = eval(input("请输入星星最大长度n"))
+# for i in range(n // 2 + 1):
+#     a = (2 * (i+1) - 1)
+#     print(' ' * int((n // 2 + 1) - i), end="")
+#     print('*' * a)
 #
-# for i in range(-(n // 2), n // 2 + 1):
-#     print(" " * abs(i))
-#     print("*" * (n - abs(i) * 2))
+# for i in range(n // 2):
+#     a = (2 * (i+1) - 1)
+#     print(' ' * (i - (n // 2 + 1)),  end="")
+#     print('*' * a)
 
-# i = -(n // 2)
-#
-# while i < n // 2 + 1:
-#     i = i + 1
+for i in range(-(n // 2), n // 2 + 1):
+    print(" " * abs(i))
+    print("*" * (n - abs(i) * 2))
+
+i = -(n // 2)
+
+while i < n // 2 + 1:
+    i = i + 1
+
+
+
 
 m, n = 10, 10
 for i in range(0, m):

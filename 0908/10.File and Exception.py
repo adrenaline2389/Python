@@ -50,3 +50,27 @@ while True:
     else:
         print(answer)
 
+# # 存储数据
+import json
+nums = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+
+path3 = Path('nums.json')
+data = json.dumps(nums)
+path3.write_text(data)
+
+# # 读取数据
+history = path3.read_text()
+numbers = json.loads(history)
+print(numbers)
+
+# # 保存和读取用户生成的数据
+path4 = Path('username.json')
+if path4.exists():
+    memory = path4.read_text()
+    username = json.loads(memory)
+    print(f'Welcome back, {username}!')
+else:
+    username = input('What is your name?')
+    memory = json.dumps(username)
+    path4.write_text(memory)
+    print(f"We'll remember you when you come back, {username}!")

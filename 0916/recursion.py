@@ -18,7 +18,7 @@ def tail_recursion(n, res):
     # 终止条件
     if n == 0:
         return res
-    # 尾递归调用
+    # 尾递归调用并返回
     return tail_recursion(n - 1, res + n)
 
 print(tail_recursion(998, 0))   # 最大尾递归深度：998，超过会导致栈溢出错误(Python默认不支持尾递归优化)
